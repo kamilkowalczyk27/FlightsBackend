@@ -11,4 +11,5 @@ public class FlightDto {
     private String departure;
     private String arrival;
     private double timeOfFlight;
+    private AircraftDto aircraftDto;
 }

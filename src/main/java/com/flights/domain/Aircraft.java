@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -42,4 +44,22 @@ public class Aircraft {
 
     @Column(name = "cruising_speed")
     private BigDecimal cruisingSpeed;
+
+    @OneToMany(
+            targetEntity = Flight.class,
+            mappedBy = "aircraft",
+            fetch = FetchType.EAGER
+    )
+    private List<Flight> flights = new ArrayList<>();
+
+    public Aircraft(String model, double height, double length, BigDecimal maxSpeed, BigDecimal fuelCapacity, BigDecimal maxRange, BigDecimal fuelBurnPerHour, BigDecimal cruisingSpeed) {
+        this.model = model;
+        this.height = height;
+        this.length = length;
+        this.maxSpeed = maxSpeed;
+        this.fuelCapacity = fuelCapacity;
+        this.maxRange = maxRange;
+        this.fuelBurnPerHour = fuelBurnPerHour;
+        this.cruisingSpeed = cruisingSpeed;
+    }
 }
