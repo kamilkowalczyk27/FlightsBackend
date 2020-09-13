@@ -52,7 +52,8 @@ public class Aircraft {
     )
     private List<Flight> flights = new ArrayList<>();
 
-    public Aircraft(String model, double height, double length, BigDecimal maxSpeed, BigDecimal fuelCapacity, BigDecimal maxRange, BigDecimal fuelBurnPerHour, BigDecimal cruisingSpeed) {
+    public Aircraft(Long id, String model, double height, double length, BigDecimal maxSpeed, BigDecimal fuelCapacity, BigDecimal maxRange, BigDecimal fuelBurnPerHour, BigDecimal cruisingSpeed) {
+        this.id = id;
         this.model = model;
         this.height = height;
         this.length = length;
