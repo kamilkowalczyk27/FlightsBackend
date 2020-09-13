@@ -25,4 +25,9 @@ public class Privilege {
 
     @ManyToMany(mappedBy = "privileges")
     private List<User> users = new ArrayList<>();
+
+    public Privilege(String name, List<User> users ) {
+        this.name = name;
+        this.users = users;
+    }
 }
