@@ -10,7 +10,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "privilege")
 public class Privilege {
@@ -26,7 +25,8 @@ public class Privilege {
     @ManyToMany(mappedBy = "privileges")
     private List<User> users = new ArrayList<>();
 
-    public Privilege(String name, List<User> users ) {
+    public Privilege(Long id, String name, List<User> users ) {
+        this.id = id;
         this.name = name;
         this.users = users;
     }

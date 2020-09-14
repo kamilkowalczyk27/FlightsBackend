@@ -25,10 +25,10 @@ public class PrivilegeDbServiceTestSuite {
     @Test
     public void getAllPrivilegesTest() {
         //Given
-        User user = new User("John", "Smith", "johnsmith@gmail.pl");
+        User user = new User(1L,"John", "Smith", "johnsmith@gmail.pl");
         ArrayList<User> users = new ArrayList<>();
         users.add(user);
-        Privilege privilege1 = new Privilege(1L,"privilegeTest1", users);
+        Privilege privilege1 = new Privilege(2L,"privilegeTest1", users);
         List<Privilege> privileges = new ArrayList<>();
         privileges.add(privilege1);
         //When
@@ -40,10 +40,10 @@ public class PrivilegeDbServiceTestSuite {
     @Test
     public void getPrivilegeTest() {
         //Given
-        User user = new User("John", "Smith", "johnsmith@gmail.pl");
+        User user = new User(1L,"John", "Smith", "johnsmith@gmail.pl");
         ArrayList<User> users = new ArrayList<>();
         users.add(user);
-        Privilege privilege = new Privilege(1L,"privilegeTest1", users);
+        Privilege privilege = new Privilege(2L,"privilegeTest1", users);
         Long privilegeIdTest = privilege.getId();
         String privilegeNameTest = privilege.getName();
         //When
@@ -55,7 +55,7 @@ public class PrivilegeDbServiceTestSuite {
     @Test
     public void savePrivilegeTest() {
         //Given
-        User user = new User("John", "Smith", "johnsmith@gmail.pl");
+        User user = new User(1L,"John", "Smith", "johnsmith@gmail.pl");
         ArrayList<User> users = new ArrayList<>();
         users.add(user);
         Privilege privilege = new Privilege(1L,"privilegeTest1", users);
@@ -71,7 +71,7 @@ public class PrivilegeDbServiceTestSuite {
     @Test
     public void deleteByIdPrivilegeTest() {
         //Given
-        User user = new User("John", "Smith", "johnsmith@gmail.pl");
+        User user = new User(1L,"John", "Smith", "johnsmith@gmail.pl");
         ArrayList<User> users = new ArrayList<>();
         users.add(user);
         Privilege privilege = new Privilege(1L,"privilegeTest1", users);
@@ -84,7 +84,7 @@ public class PrivilegeDbServiceTestSuite {
     @Test
     public void deleteAllPrivileges() {
         //Given
-        User user = new User("John", "Smith", "johnsmith@gmail.pl");
+        User user = new User(1L,"John", "Smith", "johnsmith@gmail.pl");
         ArrayList<User> users = new ArrayList<>();
         users.add(user);
         Privilege privilege = new Privilege(1L,"privilegeTest1", users);
@@ -95,9 +95,9 @@ public class PrivilegeDbServiceTestSuite {
     }
 
     @Test
-    public void countAllApivilegesTest() {
+    public void countAllPivilegesTest() {
         //Given
-        User user = new User("John", "Smith", "johnsmith@gmail.pl");
+        User user = new User(1L,"John", "Smith", "johnsmith@gmail.pl");
         ArrayList<User> users = new ArrayList<>();
         users.add(user);
         Privilege privilege = new Privilege(1L,"privilegeTest1", users);

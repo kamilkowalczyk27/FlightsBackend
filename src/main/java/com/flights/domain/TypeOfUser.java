@@ -26,7 +26,10 @@ public class TypeOfUser {
     @ManyToMany(mappedBy = "typeOfUsers")
     private List<User> users = new ArrayList<>();
 
-    public TypeOfUser(String name) {
+    public TypeOfUser(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 }
+
+
