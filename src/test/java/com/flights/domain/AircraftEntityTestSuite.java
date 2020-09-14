@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 
-@Transactional
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AircraftEntityTestSuite {
@@ -33,33 +33,38 @@ public class AircraftEntityTestSuite {
         Assert.assertEquals(37, aircraft.getLength(),0.001);
     }
 
-    @Test  //działa
-    public void testReadAircraft() throws AircraftNotFoundException {
-        //Given
-        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
-        //When
-        Aircraft savedAircraft = aircraftRepository.save(aircraft);
-        long aircraftId = savedAircraft.getId();
-        Aircraft resultReadAircraft = aircraftRepository.findById(aircraftId).orElseThrow(AircraftNotFoundException::new);
-        //Then
-        Assert.assertEquals("Airbus a320", resultReadAircraft.getModel());
-        Assert.assertEquals(11, resultReadAircraft.getHeight(),0.001);
-        Assert.assertEquals(37, resultReadAircraft.getLength(),0.001);
-    }
-
-//    @Test
-//    public void testReadAircraft() throws AircraftNotFoundException { //nie działa
+//    @Test  //działa
+//    public void testReadAircraft() throws AircraftNotFoundException {
 //        //Given
 //        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
 //        //When
-//        aircraftRepository.save(aircraft);
-//        long aircraftId = aircraft.getId();
+//        Aircraft savedAircraft = aircraftRepository.save(aircraft);
+//        System.out.println(aircraft.getId());
+//        long aircraftId = savedAircraft.getId();
+//        System.out.println(aircraft.getId());
 //        Aircraft resultReadAircraft = aircraftRepository.findById(aircraftId).orElseThrow(AircraftNotFoundException::new);
 //        //Then
 //        Assert.assertEquals("Airbus a320", resultReadAircraft.getModel());
 //        Assert.assertEquals(11, resultReadAircraft.getHeight(),0.001);
 //        Assert.assertEquals(37, resultReadAircraft.getLength(),0.001);
 //    }
+
+    @Test
+    public void testReadAircraft() throws AircraftNotFoundException { //nie działa
+        //Given
+        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
+        //When
+        Aircraft savedAircraft = aircraftRepository.save(aircraft);
+        System.out.println(aircraft.getId());
+        long aircraftId = savedAircraft.getId();
+        System.out.println(aircraft.getId());
+        Aircraft resultReadAircraft = aircraftRepository.findById(aircraft.getId()).orElseThrow(AircraftNotFoundException::new);
+        System.out.println(savedAircraft.getId());
+        //Then
+        Assert.assertEquals("Airbus a320", resultReadAircraft.getModel());
+        Assert.assertEquals(11, resultReadAircraft.getHeight(),0.001);
+        Assert.assertEquals(37, resultReadAircraft.getLength(),0.001);
+    }
 
     @Test
     public void testUpdateAircraft() {
