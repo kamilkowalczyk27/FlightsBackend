@@ -24,8 +24,8 @@ public class TypeOfUserDbServiceTestSuite {
     @Test
     public void getAllTypeOfUsersTest() {
         //Given
-        TypeOfUser typeOfUser1 = new TypeOfUser(1L, "Pilot");
-        TypeOfUser typeOfUser2 = new TypeOfUser(2L, "Passenger");
+        TypeOfUser typeOfUser1 = new TypeOfUser(1L, "Pilot", new ArrayList<>());
+        TypeOfUser typeOfUser2 = new TypeOfUser(2L, "Passenger", new ArrayList<>());
         List<TypeOfUser> typeOfUsers = new ArrayList<>();
         typeOfUsers.add(typeOfUser1);
         typeOfUsers.add(typeOfUser2);
@@ -38,7 +38,7 @@ public class TypeOfUserDbServiceTestSuite {
     @Test
     public void getTypeOfUserTest() {
         //Given
-        TypeOfUser typeOfUser = new TypeOfUser(1L, "Pilot");
+        TypeOfUser typeOfUser = new TypeOfUser(1L, "Pilot", new ArrayList<>());
         Long typeOfUserIdTest = typeOfUser.getId();
         String typeOfUserNameTest = typeOfUser.getName();
         //When
@@ -50,7 +50,7 @@ public class TypeOfUserDbServiceTestSuite {
     @Test
     public void saveTypeOfUserTest() {
         //Given
-        TypeOfUser typeOfUser = new TypeOfUser(1L, "Pilot");
+        TypeOfUser typeOfUser = new TypeOfUser(1L, "Pilot", new ArrayList<>());
         //When
         when(typeOfUserRepository.save(typeOfUser)).thenReturn(typeOfUser);
         TypeOfUser savedTypeOfUser = typeOfUserDbService.saveTypeOfUser(typeOfUser);
@@ -62,8 +62,8 @@ public class TypeOfUserDbServiceTestSuite {
     @Test
     public void deleteByIdTypeOfUserTest() {
         //Given
-        TypeOfUser typeOfUser1 = new TypeOfUser(1L, "Pilot");
-        TypeOfUser typeOfUser2 = new TypeOfUser(2L, "Passenger");
+        TypeOfUser typeOfUser1 = new TypeOfUser(1L, "Pilot", new ArrayList<>());
+        TypeOfUser typeOfUser2 = new TypeOfUser(2L, "Passenger", new ArrayList<>());
         List<TypeOfUser> typeOfUsers = new ArrayList<>();
         typeOfUsers.add(typeOfUser1);
         typeOfUsers.add(typeOfUser2);
@@ -76,8 +76,8 @@ public class TypeOfUserDbServiceTestSuite {
     @Test
     public void deleteAllTypeOfUsersTest() {
         //Given
-        TypeOfUser typeOfUser1 = new TypeOfUser(1L, "Pilot");
-        TypeOfUser typeOfUser2 = new TypeOfUser(2L, "Passenger");
+        TypeOfUser typeOfUser1 = new TypeOfUser(1L, "Pilot", new ArrayList<>());
+        TypeOfUser typeOfUser2 = new TypeOfUser(2L, "Passenger", new ArrayList<>());
         List<TypeOfUser> typeOfUsers = new ArrayList<>();
         typeOfUsers.add(typeOfUser1);
         typeOfUsers.add(typeOfUser2);
@@ -90,7 +90,7 @@ public class TypeOfUserDbServiceTestSuite {
     @Test
     public void countAllTypeOfUsersTest() {
         //Given
-        TypeOfUser typeOfUser = new TypeOfUser(1L, "Pilot");
+        TypeOfUser typeOfUser = new TypeOfUser(1L, "Pilot", new ArrayList<>());
         typeOfUserRepository.save(typeOfUser);
         long countAllTypeOfUsers = typeOfUserRepository.count();
         //When

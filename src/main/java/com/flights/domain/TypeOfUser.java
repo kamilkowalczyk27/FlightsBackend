@@ -29,6 +29,12 @@ public class TypeOfUser {
         this.id = id;
         this.name = name;
     }
+
+    public TypeOfUser(Long id, String name, List<User> userList) {
+        this.id = id;
+        this.name = name;
+        this.users = userList;
+    }
 }
 
 

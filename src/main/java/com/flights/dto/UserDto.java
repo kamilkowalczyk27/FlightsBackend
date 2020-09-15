@@ -13,6 +13,6 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String email;
-    private List<PrivilegeDto> privilegeDtos;
-    private List<TypeOfUserDto> typeOfUserDtos;
+    private List<TypeOfUserDto> typeOfUserDto;
+    private List<PrivilegeDto> privilegeDto;
 }

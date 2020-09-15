@@ -48,10 +48,12 @@ public class User {
     )
     private List<TypeOfUser> typeOfUsers = new ArrayList<>();
 
-    public User(Long id, String firstName, String lastName, String email) {
+    public User(Long id, String firstName, String lastName, String email, List<TypeOfUser> typeOfUserList, List<Privilege> privilegeList) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.typeOfUsers = typeOfUserList;
+        this.privileges = privilegeList;
     }
 }

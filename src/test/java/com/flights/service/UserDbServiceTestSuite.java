@@ -24,8 +24,8 @@ public class UserDbServiceTestSuite {
     @Test
     public void getAllUsersTet() {
         //Given
-        User user1 = new User(1L, "John", "Smith", "johnsmith@gmail.com");
-        User user2 = new User(2L,"Mark", "Big", "markbig@gmail.com");
+        User user1 = new User(1L, "John", "Smith", "johnsmith@gmail.com", new ArrayList<>(), new ArrayList<>());
+        User user2 = new User(2L,"Mark", "Big", "markbig@gmail.com", new ArrayList<>(), new ArrayList<>());
         List<User> users = new ArrayList<>();
         users.add(user1);
         users.add(user2);
@@ -38,7 +38,7 @@ public class UserDbServiceTestSuite {
     @Test
     public void getUserTest() {
         //Given
-        User user = new User(1L, "John", "Smith", "johnsmith@gmail.com");
+        User user = new User(1L, "John", "Smith", "johnsmith@gmail.com", new ArrayList<>(), new ArrayList<>());
         Long userIdTest = user.getId();
         String userFirstNameTest = user.getFirstName();
         //When
@@ -50,7 +50,7 @@ public class UserDbServiceTestSuite {
     @Test
     public void saveUserTest() {
         //Given
-        User user = new User(1L, "John", "Smith", "johnsmith@gmail.com");
+        User user = new User(1L, "John", "Smith", "johnsmith@gmail.com", new ArrayList<>(), new ArrayList<>());
         //When
         when(userRepository.save(user)).thenReturn(user);
         User savedUser = userDbService.saveUser(user);
@@ -64,8 +64,8 @@ public class UserDbServiceTestSuite {
     @Test
     public void deleteByIdUserTest() {
         //Given
-        User user1 = new User(1L, "John", "Smith", "johnsmith@gmail.com");
-        User user2 = new User(2L,"Mark", "Big", "markbig@gmail.com");
+        User user1 = new User(1L, "John", "Smith", "johnsmith@gmail.com", new ArrayList<>(), new ArrayList<>());
+        User user2 = new User(2L,"Mark", "Big", "markbig@gmail.com", new ArrayList<>(), new ArrayList<>());
         List<User> users = new ArrayList<>();
         users.add(user1);
         users.add(user2);
@@ -78,8 +78,8 @@ public class UserDbServiceTestSuite {
     @Test
     public void deleteAllUsers() {
         //Given
-        User user1 = new User(1L, "John", "Smith", "johnsmith@gmail.com");
-        User user2 = new User(2L,"Mark", "Big", "markbig@gmail.com");
+        User user1 = new User(1L, "John", "Smith", "johnsmith@gmail.com", new ArrayList<>(), new ArrayList<>());
+        User user2 = new User(2L,"Mark", "Big", "markbig@gmail.com", new ArrayList<>(), new ArrayList<>());
         List<User> users = new ArrayList<>();
         users.add(user1);
         users.add(user2);
@@ -92,7 +92,7 @@ public class UserDbServiceTestSuite {
     @Test
     public void countAllUsers() {
         //Given
-        User user = new User(1L, "John", "Smith", "johnsmith@gmail.com");
+        User user = new User(1L, "John", "Smith", "johnsmith@gmail.com", new ArrayList<>(), new ArrayList<>());
         userRepository.save(user);
         long countAllUsers = userRepository.count();
         //When

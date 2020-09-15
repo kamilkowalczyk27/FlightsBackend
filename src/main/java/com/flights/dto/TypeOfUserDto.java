@@ -11,5 +11,5 @@ import java.util.List;
 public class TypeOfUserDto {
     private Long id;
     private String name;
-    private List<UserDto> userDtos;
+    private List<UserDto> userDto;
 }
