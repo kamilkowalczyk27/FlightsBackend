@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "type_of_user")
 public class TypeOfUser {
 
@@ -28,12 +29,6 @@ public class TypeOfUser {
     public TypeOfUser(Long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public TypeOfUser(Long id, String name, List<User> userList) {
-        this.id = id;
-        this.name = name;
-        this.users = userList;
     }
 }
 

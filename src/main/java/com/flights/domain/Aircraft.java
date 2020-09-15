@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "aircraft")
 public class Aircraft {
 
@@ -50,17 +51,4 @@ public class Aircraft {
             fetch = FetchType.EAGER
     )
     private List<Flight> flights = new ArrayList<>();
-
-    public Aircraft(Long id, String model, double height, double length, BigDecimal maxSpeed, BigDecimal fuelCapacity, BigDecimal maxRange, BigDecimal fuelBurnPerHour, BigDecimal cruisingSpeed, List<Flight> flightList) {
-        this.id = id;
-        this.model = model;
-        this.height = height;
-        this.length = length;
-        this.maxSpeed = maxSpeed;
-        this.fuelCapacity = fuelCapacity;
-        this.maxRange = maxRange;
-        this.fuelBurnPerHour = fuelBurnPerHour;
-        this.cruisingSpeed = cruisingSpeed;
-        this.flights = flightList;
-    }
 }

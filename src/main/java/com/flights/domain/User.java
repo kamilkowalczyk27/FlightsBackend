@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "users")
 public class User {
 
@@ -34,26 +35,17 @@ public class User {
 
     @ManyToMany
     @JoinTable(
-            name = "JOIN_USER_PRIVILEGE",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "privilege_id", referencedColumnName = "id")}
-    )
-    private List<Privilege> privileges = new ArrayList<>();
-
-    @ManyToMany
-    @JoinTable(
             name = "JOIN_USER_TYPE_OF_USER",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "type_of_user_id", referencedColumnName = "id")}
     )
     private List<TypeOfUser> typeOfUsers = new ArrayList<>();
 
-    public User(Long id, String firstName, String lastName, String email, List<TypeOfUser> typeOfUserList, List<Privilege> privilegeList) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.typeOfUsers = typeOfUserList;
-        this.privileges = privilegeList;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "JOIN_USER_PRIVILEGE",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "privilege_id", referencedColumnName = "id")}
+    )
+    private List<Privilege> privileges = new ArrayList<>();
 }
