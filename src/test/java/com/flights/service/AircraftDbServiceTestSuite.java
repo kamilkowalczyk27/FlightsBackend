@@ -25,8 +25,8 @@ public class AircraftDbServiceTestSuite {
     @Test
     public void getAllAircraftsTest() {
         //Given
-        Aircraft aircraft1 = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
-        Aircraft aircraft2 = new Aircraft(2L,"Airbus a380", 10, 39 , new BigDecimal(850), new BigDecimal(31000), new BigDecimal(6000), new BigDecimal(5500), new BigDecimal(850));
+        Aircraft aircraft1 = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
+        Aircraft aircraft2 = new Aircraft(2L,"Airbus a380", 10, 39 , new BigDecimal(850), new BigDecimal(31000), new BigDecimal(6000), new BigDecimal(5500), new BigDecimal(850), new ArrayList<>());
         List<Aircraft> aircrafts = new ArrayList<>();
         aircrafts.add(aircraft1);
         aircrafts.add(aircraft2);
@@ -39,7 +39,7 @@ public class AircraftDbServiceTestSuite {
     @Test
     public void getAircraftTest() {
         //Given
-        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
+        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         Long aircraftIdTest = aircraft.getId();
         String aircraftModelTest = aircraft.getModel();
         //When
@@ -51,7 +51,7 @@ public class AircraftDbServiceTestSuite {
     @Test
     public void saveAircraftTest() {
         //Given
-        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
+        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         //When
         when(aircraftRepository.save(aircraft)).thenReturn(aircraft);
         Aircraft savedAircraft = aircraftDbService.saveAircraft(aircraft);
@@ -64,8 +64,8 @@ public class AircraftDbServiceTestSuite {
     @Test
     public void deleteByIdAircraftTest() {
         //Given
-        Aircraft aircraft1 = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
-        Aircraft aircraft2 = new Aircraft(2L,"Airbus a380", 10, 39 , new BigDecimal(850), new BigDecimal(31000), new BigDecimal(6000), new BigDecimal(5500), new BigDecimal(850));
+        Aircraft aircraft1 = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
+        Aircraft aircraft2 = new Aircraft(2L,"Airbus a380", 10, 39 , new BigDecimal(850), new BigDecimal(31000), new BigDecimal(6000), new BigDecimal(5500), new BigDecimal(850), new ArrayList<>());
         List<Aircraft> aircrafts = new ArrayList<>();
         aircrafts.add(aircraft1);
         aircrafts.add(aircraft2);
@@ -78,8 +78,8 @@ public class AircraftDbServiceTestSuite {
     @Test
     public void deleteAllAircraftsTest() {
         //Given
-        Aircraft aircraft1 = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
-        Aircraft aircraft2 = new Aircraft(2L,"Airbus a380", 10, 39 , new BigDecimal(850), new BigDecimal(31000), new BigDecimal(6000), new BigDecimal(5500), new BigDecimal(850));
+        Aircraft aircraft1 = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
+        Aircraft aircraft2 = new Aircraft(2L,"Airbus a380", 10, 39 , new BigDecimal(850), new BigDecimal(31000), new BigDecimal(6000), new BigDecimal(5500), new BigDecimal(850), new ArrayList<>());
         List<Aircraft> aircrafts = new ArrayList<>();
         aircrafts.add(aircraft1);
         aircrafts.add(aircraft2);
@@ -92,7 +92,7 @@ public class AircraftDbServiceTestSuite {
     @Test
     public void countAllAircraftsTest() {
         //Given
-        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
+        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         aircraftRepository.save(aircraft);
         long countAllAircrafts = aircraftRepository.count();
         //When

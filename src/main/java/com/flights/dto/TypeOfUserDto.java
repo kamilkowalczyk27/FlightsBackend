@@ -9,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TypeOfUserDto {
+    private Long id;
     private String name;
     private List<UserDto> userDtos;
 }

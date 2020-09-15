@@ -10,13 +10,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AircraftDto {
+    private Long id;
     private String model;
+    private double height;
+    private double length;
     private BigDecimal maxSpeed;
     private BigDecimal fuelCapacity;
     private BigDecimal maxRange;
     private BigDecimal fuelBurnPerHour;
     private BigDecimal cruisingSpeed;
-    private double height;
-    private double length;
-    private List<FlightDto> flightDtos;
+    private List<FlightDto> flightDtoList;
+
+
 }

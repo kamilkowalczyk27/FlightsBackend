@@ -9,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PrivilegeDto {
+    private Long id;
     private String name;
     private List<UserDto> userDtos;
 }

@@ -1,6 +1,6 @@
 package com.flights.domain;
 
-import com.flights.exceptions.AircraftNotFoundException;
+import com.flights.exception.AircraftNotFoundException;
 import com.flights.repository.AircraftRepository;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,8 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
-
+@Transactional
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AircraftEntityTestSuite {
@@ -22,7 +23,7 @@ public class AircraftEntityTestSuite {
     @Test
     public void testSaveAircraft() {
         //Given
-        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
+        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         //When
         aircraftRepository.save(aircraft);
         long aircraftId = aircraft.getId();
@@ -33,16 +34,33 @@ public class AircraftEntityTestSuite {
         Assert.assertEquals(37, aircraft.getLength(),0.001);
     }
 
-//    @Test  //działa
-//    public void testReadAircraft() throws AircraftNotFoundException {
+    @Test  //działa
+    public void testReadAircraft() throws AircraftNotFoundException {
+        //Given
+        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
+        //When
+        Aircraft savedAircraft = aircraftRepository.save(aircraft);
+        System.out.println(aircraft.getId());
+        long aircraftId = savedAircraft.getId();
+        System.out.println(aircraft.getId());
+        Aircraft resultReadAircraft = aircraftRepository.findById(aircraftId).orElseThrow(AircraftNotFoundException::new);
+        //Then
+        Assert.assertEquals("Airbus a320", resultReadAircraft.getModel());
+        Assert.assertEquals(11, resultReadAircraft.getHeight(),0.001);
+        Assert.assertEquals(37, resultReadAircraft.getLength(),0.001);
+    }
+
+//    @Test
+//    public void testReadAircraft() throws AircraftNotFoundException { //nie działa
 //        //Given
-//        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
+//        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
 //        //When
 //        Aircraft savedAircraft = aircraftRepository.save(aircraft);
 //        System.out.println(aircraft.getId());
 //        long aircraftId = savedAircraft.getId();
 //        System.out.println(aircraft.getId());
-//        Aircraft resultReadAircraft = aircraftRepository.findById(aircraftId).orElseThrow(AircraftNotFoundException::new);
+//        Aircraft resultReadAircraft = aircraftRepository.findById(aircraft.getId()).orElseThrow(AircraftNotFoundException::new);
+//        System.out.println(savedAircraft.getId());
 //        //Then
 //        Assert.assertEquals("Airbus a320", resultReadAircraft.getModel());
 //        Assert.assertEquals(11, resultReadAircraft.getHeight(),0.001);
@@ -50,26 +68,9 @@ public class AircraftEntityTestSuite {
 //    }
 
     @Test
-    public void testReadAircraft() throws AircraftNotFoundException { //nie działa
-        //Given
-        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
-        //When
-        Aircraft savedAircraft = aircraftRepository.save(aircraft);
-        System.out.println(aircraft.getId());
-        long aircraftId = savedAircraft.getId();
-        System.out.println(aircraft.getId());
-        Aircraft resultReadAircraft = aircraftRepository.findById(aircraft.getId()).orElseThrow(AircraftNotFoundException::new);
-        System.out.println(savedAircraft.getId());
-        //Then
-        Assert.assertEquals("Airbus a320", resultReadAircraft.getModel());
-        Assert.assertEquals(11, resultReadAircraft.getHeight(),0.001);
-        Assert.assertEquals(37, resultReadAircraft.getLength(),0.001);
-    }
-
-    @Test
     public void testUpdateAircraft() {
         //Given
-        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
+        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         //When
         aircraftRepository.save(aircraft);
         aircraft.setModel("Boeing 737");
@@ -81,7 +82,7 @@ public class AircraftEntityTestSuite {
     @Test
     public void testDeleteAircraft() {
         //Given
-        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828));
+        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         //When // działa
         Aircraft saveAircraft = aircraftRepository.save(aircraft);
         long aircraftId = saveAircraft.getId();
@@ -89,8 +90,7 @@ public class AircraftEntityTestSuite {
         aircraftRepository.deleteById(aircraftId);
         long countAfterDelete = aircraftRepository.count();
         //Then
-        Assert.assertEquals(1, countBeforeDelete);
-        Assert.assertEquals(0, countAfterDelete);
+        Assert.assertEquals(countBeforeDelete -1, countAfterDelete);
 
         System.out.println(countBeforeDelete);
         System.out.println(countAfterDelete);

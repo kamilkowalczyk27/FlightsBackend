@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FlightDto {
+    private Long id;
     private String departure;
     private String arrival;
     private double timeOfFlight;
