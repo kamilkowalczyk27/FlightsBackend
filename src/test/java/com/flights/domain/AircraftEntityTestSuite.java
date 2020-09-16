@@ -18,10 +18,10 @@ import java.util.ArrayList;
 public class AircraftEntityTestSuite {
 
     @Autowired
-    AircraftRepository aircraftRepository;
+    private AircraftRepository aircraftRepository;
 
     @Test
-    public void testSaveAircraft() {
+    public void saveAircraftTest() {
         //Given
         Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         //When
@@ -35,7 +35,7 @@ public class AircraftEntityTestSuite {
     }
 
     @Test  //działa
-    public void testReadAircraft() throws AircraftNotFoundException {
+    public void readAircraftTest() throws AircraftNotFoundException {
         //Given
         Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         //When
@@ -51,7 +51,7 @@ public class AircraftEntityTestSuite {
     }
 
 //    @Test
-//    public void testReadAircraft() throws AircraftNotFoundException { //nie działa
+//    public void readAircraftTest() throws AircraftNotFoundException { //nie działa
 //        //Given
 //        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
 //        //When
@@ -68,7 +68,7 @@ public class AircraftEntityTestSuite {
 //    }
 
     @Test
-    public void testUpdateAircraft() {
+    public void updateAircraftTest() {
         //Given
         Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         //When
@@ -80,7 +80,7 @@ public class AircraftEntityTestSuite {
     }
 
     @Test
-    public void testDeleteAircraft() {
+    public void deleteAircraftTest() {
         //Given
         Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         //When // działa
