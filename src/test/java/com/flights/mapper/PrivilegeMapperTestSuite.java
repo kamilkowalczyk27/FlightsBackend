@@ -71,5 +71,4 @@ public class PrivilegeMapperTestSuite {
         assertEquals("privilegeTest1", privilegeDtoList.get(0).getName());
         assertEquals("privilegeTest2", privilegeDtoList.get(1).getName());
     }
-
 }
