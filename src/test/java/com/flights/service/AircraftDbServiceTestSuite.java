@@ -7,12 +7,15 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+@Transactional
 @RunWith(MockitoJUnitRunner.Silent.class)
 public class AircraftDbServiceTestSuite {
 
@@ -21,6 +24,8 @@ public class AircraftDbServiceTestSuite {
 
     @Mock
     private AircraftRepository aircraftRepository;
+
+
 
     @Test
     public void getAllAircraftsTest() {
