@@ -30,4 +30,11 @@ public class Flight {
     @ManyToOne
     @JoinColumn(name = "aircraft_id")
     private Aircraft aircraft;
+
+    public Flight(String departure, String arrival, double timeOfFlight, Aircraft aircraft) {
+        this.departure = departure;
+        this.arrival = arrival;
+        this.timeOfFlight = timeOfFlight;
+        this.aircraft = aircraft;
+    }
 }
