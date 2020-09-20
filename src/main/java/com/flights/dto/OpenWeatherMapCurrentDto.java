@@ -19,22 +19,4 @@ public class OpenWeatherMapCurrentDto {
 
     @JsonProperty("Temperature")
     private double temperature;
-
-    @JsonProperty("Humidity")
-    private double humidity;
-
-    @JsonProperty("Pressure")
-    private double pressure;
-
-    @JsonProperty("Minimum temperature")
-    private double minTemperature;
-
-    @JsonProperty("Maximum temperature")
-    private double maxTemperature;
-
-    @JsonProperty("Wind speed")
-    private double windSpeed;
-
-    @JsonProperty("Wind direction")
-    private double windDirection;
 }

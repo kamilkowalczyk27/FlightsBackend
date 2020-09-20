@@ -8,9 +8,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class OpenWeatherMapConfig {
 
-//    @Value(value = "${open.weather.map.app.key}")
-//    private String appKey;
-//
-//    @Value("${open.weather.map.api.endpoint.prod}")
-//    private String openWeatherOpenApiEndpoint;
+    @Value(value = "${open.weather.map.app.key}")
+    private String appKey;
+
+    @Value("${open.weather.map.api.endpoint.prod}")
+    private String openWeatherOpenApiEndpoint;
+
+    @Value(value = "${open.weather.map.api.city}")
+    private String openWeatherApiCity;
 }
