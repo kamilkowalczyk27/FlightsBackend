@@ -18,7 +18,7 @@ public class ScheduleInfo {
     private UserRepository userRepository;
 
     @Scheduled(cron = "0 0 10 * * *")
-    @Scheduled(fixedDelay = 10000)
+    //@Scheduled(fixedDelay = 10000)
     public void sendUserCountInformation() {
         long userSize = userRepository.count();
         String userOrUsers = userSize == 1? "user": "users";

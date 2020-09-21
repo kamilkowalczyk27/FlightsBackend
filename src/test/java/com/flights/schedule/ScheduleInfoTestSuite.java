@@ -26,7 +26,7 @@ public class ScheduleInfoTestSuite {
     @Test
     public void sendUserCountInformationTest() {
         //Given
-        User user = new User(1L, "John", "Smith", "johnsmith@gmail.com", new ArrayList<>(), new ArrayList<>());
+        User user = new User("John", "Smith", "johnsmith@gmail.com", new ArrayList<>(), new ArrayList<>());
         userRepository.save(user);
         long userSize = userRepository.count();
         String userOrUsers = userSize == 1? "user": "users";

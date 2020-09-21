@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class OpenWeatherMapClient {
@@ -17,15 +20,17 @@ public class OpenWeatherMapClient {
     @Autowired
     private RestTemplate restTemplate;
 
-
-    public OpenWeatherMapCurrentDto getCurrentWeatherByCity() {
+    public List<OpenWeatherMapCurrentDto> getCurrentWeatherByCity() {
         URI url = UriComponentsBuilder.fromHttpUrl(openWeatherMapConfig.getOpenWeatherOpenApiEndpoint())
                 .queryParam("q", openWeatherMapConfig.getOpenWeatherApiCity())
-                .queryParam("key", openWeatherMapConfig.getAppKey())
+                .queryParam("appid", openWeatherMapConfig.getAppKey())
                 .build().encode().toUri();
 
-        OpenWeatherMapCurrentDto weatherResponse = restTemplate.getForObject(url, OpenWeatherMapCurrentDto.class);
+        OpenWeatherMapCurrentDto[] weatherResponse = restTemplate.getForObject(url, OpenWeatherMapCurrentDto[].class);
 
-        return new OpenWeatherMapCurrentDto();
+        if (weatherResponse != null) {
+            return Arrays.asList(weatherResponse);
+        }
+        return new ArrayList<>();
     }
 }

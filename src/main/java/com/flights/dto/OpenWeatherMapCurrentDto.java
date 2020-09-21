@@ -14,9 +14,6 @@ import org.springframework.stereotype.Component;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OpenWeatherMapCurrentDto {
 
-    @JsonProperty("City")
-    private String city;
-
-    @JsonProperty("Temperature")
-    private double temperature;
+    @JsonProperty("name")
+    private String name;
 }

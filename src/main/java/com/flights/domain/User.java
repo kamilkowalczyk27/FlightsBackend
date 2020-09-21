@@ -48,4 +48,12 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "privilege_id", referencedColumnName = "id")}
     )
     private List<Privilege> privileges = new ArrayList<>();
+
+    public User(String firstName, String lastName, String email, List<TypeOfUser> typeOfUserList, List<Privilege> privilegeList ) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.typeOfUsers = typeOfUserList;
+        this.privileges = privilegeList;
+    }
 }
