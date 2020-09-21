@@ -26,10 +26,12 @@ public class OpenWeatherMapClient {
                 .queryParam("appid", openWeatherMapConfig.getAppKey())
                 .build().encode().toUri();
 
-        OpenWeatherMapCurrentDto[] weatherResponse = restTemplate.getForObject(url, OpenWeatherMapCurrentDto[].class);
+        OpenWeatherMapCurrentDto weatherResponse = restTemplate.getForObject(url, OpenWeatherMapCurrentDto.class);
 
         if (weatherResponse != null) {
-            return Arrays.asList(weatherResponse);
+            List<OpenWeatherMapCurrentDto> result = new ArrayList<>();
+            result.add(weatherResponse);
+            return result;
         }
         return new ArrayList<>();
     }

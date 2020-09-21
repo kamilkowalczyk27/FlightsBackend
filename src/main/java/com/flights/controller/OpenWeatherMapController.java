@@ -16,7 +16,8 @@ public class OpenWeatherMapController {
     private OpenWeatherMapClient openWeatherMapClient;
 
     @RequestMapping(method = RequestMethod.GET, value = "/city")
-    public void getCurrentWeatherByCity() {
+    public List<OpenWeatherMapCurrentDto> getCurrentWeatherByCity() {
         List<OpenWeatherMapCurrentDto> weatherByCity = openWeatherMapClient.getCurrentWeatherByCity();
+        return weatherByCity;
     }
 }
