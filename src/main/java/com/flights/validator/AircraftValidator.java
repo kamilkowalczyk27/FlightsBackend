@@ -1,6 +1,5 @@
 package com.flights.validator;
 
-import com.flights.domain.Aircraft;
 import com.flights.dto.AircraftDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
