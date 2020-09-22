@@ -1,7 +1,9 @@
 package com.flights.controller;
 
+import com.flights.domain.Aircraft;
 import com.flights.dto.AircraftDto;
 import com.flights.exception.AircraftNotFoundException;
+import com.flights.facade.AircraftFacade;
 import com.flights.mapper.AircraftMapper;
 import com.flights.service.AircraftDbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class AircraftController {
 
     @Autowired
     private AircraftMapper aircraftMapper;
+
+    @Autowired
+    private AircraftFacade aircraftFacade;
 
     @RequestMapping(method = RequestMethod.GET, value = "/aircrafts")
     public List<AircraftDto> getAircrafts() {
@@ -46,5 +51,10 @@ public class AircraftController {
             aircraftDbService.deleteById(aircraftId);
         else
             throw new AircraftNotFoundException();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getAircraftsFacade")
+    public List<Aircraft> getAllAircraftsFacade() {
+        return aircraftFacade.getAllAircraftsFacade();
     }
 }
