@@ -1,4 +1,4 @@
-package com.flights.dto;
+package com.flights.dto.openWeatherMapDto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,11 +12,20 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WeatherDto {
+public class MainDto {
 
-    @JsonProperty("main")
-    private String main;
+    @JsonProperty("temp")
+    private double temp;
 
-    @JsonProperty("description")
-    private String description;
+    @JsonProperty("temp_min")
+    private double temp_min;
+
+    @JsonProperty("temp_max")
+    private double temp_max;
+
+    @JsonProperty("pressure")
+    private double pressure;
+
+    @JsonProperty("humidity")
+    private double humidity;
 }

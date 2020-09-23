@@ -1,4 +1,4 @@
-package com.flights.dto;
+package com.flights.dto.weatherbitDto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WindDto {
+public class WeatherbitDto {
 
-    @JsonProperty("speed")
-    private double speed;
+    @JsonProperty("description")
+    private String description;
 }

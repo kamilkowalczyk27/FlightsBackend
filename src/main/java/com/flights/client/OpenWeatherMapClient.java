@@ -1,7 +1,7 @@
 package com.flights.client;
 
 import com.flights.config.OpenWeatherMapConfig;
-import com.flights.dto.OpenWeatherMapCurrentDto;
+import com.flights.dto.openWeatherMapDto.OpenWeatherMapCurrentDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

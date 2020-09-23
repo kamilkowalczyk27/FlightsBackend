@@ -1,4 +1,4 @@
-package com.flights.dto;
+package com.flights.dto.openWeatherMapDto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,8 +13,20 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WeatherbitCurrentDto {
+public class OpenWeatherMapCurrentDto {
 
-    @JsonProperty("data")
-    private List<DataDto> dataDtoList;
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("sys")
+    private SysDto sysDto;
+
+    @JsonProperty("weather")
+    private List<WeatherDto> weathers;
+
+    @JsonProperty("main")
+    private MainDto mainDto;
+
+    @JsonProperty("wind")
+    private WindDto windDto;
 }
