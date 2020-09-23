@@ -2,6 +2,7 @@ package com.flights.controller;
 
 import com.flights.domain.Aircraft;
 import com.flights.dto.AircraftDto;
+import com.flights.facade.AircraftFacade;
 import com.flights.mapper.AircraftMapper;
 import com.flights.service.AircraftDbService;
 import org.junit.Test;
@@ -35,6 +36,9 @@ public class AircraftControllerTestSuite {
 
     @MockBean
     private AircraftMapper aircraftMapper;
+
+    @MockBean
+    private AircraftFacade aircraftFacade;
 
     @Test
     public void getAircrafts() throws Exception {

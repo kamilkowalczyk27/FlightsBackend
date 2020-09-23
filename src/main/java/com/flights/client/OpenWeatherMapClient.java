@@ -8,7 +8,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -22,7 +21,7 @@ public class OpenWeatherMapClient {
 
     public List<OpenWeatherMapCurrentDto> getCurrentWeatherByCity() {
         URI url = UriComponentsBuilder.fromHttpUrl(openWeatherMapConfig.getOpenWeatherOpenApiEndpoint())
-                .queryParam("q", openWeatherMapConfig.getOpenWeatherApiCity())
+                .queryParam("q", openWeatherMapConfig.getOpenWeatherApiCity() )
                 .queryParam("appid", openWeatherMapConfig.getAppKey())
                 .build().encode().toUri();
 

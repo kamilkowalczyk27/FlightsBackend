@@ -6,27 +6,26 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
-import java.util.List;
 
 @Component
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OpenWeatherMapCurrentDto {
+public class MainDto {
 
-    @JsonProperty("name")
-    private String name;
+    @JsonProperty("temp")
+    private double temp;
 
-    @JsonProperty("sys")
-    private SysDto sysDto;
+    @JsonProperty("temp_min")
+    private double temp_min;
 
-    @JsonProperty("weather")
-    private List<WeatherDto> weathers;
+    @JsonProperty("temp_max")
+    private double temp_max;
 
-    @JsonProperty("main")
-    private MainDto mainDto;
+    @JsonProperty("pressure")
+    private double pressure;
 
-    @JsonProperty("wind")
-    private WindDto windDto;
+    @JsonProperty("humidity")
+    private double humidity;
 }
