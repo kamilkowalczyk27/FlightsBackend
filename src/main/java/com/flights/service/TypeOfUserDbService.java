@@ -25,6 +25,10 @@ public class TypeOfUserDbService {
         return typeOfUserRepository.save(typeOfUser);
     }
 
+    public TypeOfUser updateTypeOfUser(TypeOfUser typeOfUser) {
+        return typeOfUserRepository.save(typeOfUser);
+    }
+
     public void deleteById(final Long id) {
         typeOfUserRepository.deleteById(id);
     }

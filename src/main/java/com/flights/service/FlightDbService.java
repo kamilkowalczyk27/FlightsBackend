@@ -25,6 +25,10 @@ public class FlightDbService {
         return flightRepository.save(flight);
     }
 
+    public Flight updateFlight(Flight flight) {
+        return flightRepository.save(flight);
+    }
+
     public void deleteById(final Long id) {
         flightRepository.deleteById(id);
     }

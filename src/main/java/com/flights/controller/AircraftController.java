@@ -35,7 +35,7 @@ public class AircraftController {
         return aircraftMapper.mapToAircraftDto(aircraftDbService.getAircraft(aircraftId).orElseThrow(AircraftNotFoundException::new));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "aircrafts", consumes = APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/aircrafts", consumes = APPLICATION_JSON_VALUE)
     public void createAircraft(@RequestBody AircraftDto aircraftDto) {
         aircraftDbService.saveAircraft(aircraftMapper.mapToAircraft(aircraftDto));
     }

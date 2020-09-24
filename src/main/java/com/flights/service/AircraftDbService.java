@@ -25,6 +25,10 @@ public class AircraftDbService {
         return aircraftRepository.save(aircraft);
     }
 
+    public Aircraft updateAircraft(Aircraft aircraft) {
+        return aircraftRepository.save(aircraft);
+    }
+
     public void deleteById(final Long id) {
         aircraftRepository.deleteById(id);
     }

@@ -7,6 +7,7 @@ import com.flights.mapper.AircraftMapper;
 import com.flights.service.AircraftDbService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -23,6 +24,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import java.util.Optional;
+import com.google.gson.Gson;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(AircraftController.class)
@@ -41,7 +43,7 @@ public class AircraftControllerTestSuite {
     private AircraftFacade aircraftFacade;
 
     @Test
-    public void getAircrafts() throws Exception {
+    public void getAircraftsTest() throws Exception {
         //Given
         AircraftDto aircraftDto = new AircraftDto(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         List<AircraftDto> aircraftDtoList = new ArrayList<>();
@@ -88,6 +90,57 @@ public class AircraftControllerTestSuite {
         when(aircraftDbService.getAircraft(aircraftId)).thenReturn(Optional.of(aircraft));
         //When & Then
         mockMvc.perform(delete("/v1/aircrafts/1").contentType(MediaType.APPLICATION_JSON).param("aircraftId", "1"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void createAircraftTest() throws Exception {
+        //Given
+        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
+        AircraftDto aircraftDto = new AircraftDto(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
+
+        when(aircraftMapper.mapToAircraft(aircraftDto)).thenReturn(aircraft);
+        when(aircraftDbService.saveAircraft(aircraft)).thenReturn(aircraft);
+
+        Gson gson = new Gson();
+        String jsonContent = gson.toJson(aircraftDto);
+        //When & Then
+        mockMvc.perform(post("/v1/aircrafts").contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8")
+                .content(jsonContent))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void updateAircraftTest() throws Exception {
+        //Given
+        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
+        AircraftDto aircraftDto = new AircraftDto(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
+
+        when(aircraftMapper.mapToAircraft(ArgumentMatchers.any(AircraftDto.class))).thenReturn(aircraft);
+        when(aircraftDbService.saveAircraft(aircraft)).thenReturn(aircraft);
+        when(aircraftMapper.mapToAircraftDto(aircraft)).thenReturn(aircraftDto);
+
+        Gson gson = new Gson();
+        String jsonContent = gson.toJson(aircraftDto);
+        //When & Then
+        mockMvc.perform(put("/v1/aircrafts").contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8")
+                .content(jsonContent))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.model", is("Airbus a320")));
+    }
+
+    @Test
+    public void shouldEmptyAircraftsListTest() throws Exception {
+        //Given
+        List<Aircraft> aircraftList = new ArrayList<>();
+
+        when(aircraftDbService.getAllAircrafts()).thenReturn(aircraftList);
+        //When & Then
+        mockMvc.perform(get("/v1/aircrafts").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$", hasSize(0)))
                 .andExpect(status().isOk());
     }
 }

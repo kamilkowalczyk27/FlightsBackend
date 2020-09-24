@@ -25,6 +25,10 @@ public class PrivilegeDbService {
         return privilegeRepository.save(privilege);
     }
 
+    public Privilege updatePrivilege(Privilege privilege) {
+        return privilegeRepository.save(privilege);
+    }
+
     public void deleteById(final Long id) {
         privilegeRepository.deleteById(id);
     }
