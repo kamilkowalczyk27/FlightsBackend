@@ -30,12 +30,12 @@ public class FlightController {
         return flightMapper.mapToFlightDto(flightDbService.getFlight(flightId).orElseThrow(FlightNotFoundException::new));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "flights", consumes = APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/flights", consumes = APPLICATION_JSON_VALUE)
     public void createFlight(@RequestBody FlightDto flightDto) {
         flightDbService.saveFlight(flightMapper.mapToFlight(flightDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "flights")
+    @RequestMapping(method = RequestMethod.PUT, value = "/flights")
     public FlightDto updateFlight(@RequestBody FlightDto flightDto) {
         return flightMapper.mapToFlightDto(flightDbService.saveFlight(flightMapper.mapToFlight(flightDto)));
     }
