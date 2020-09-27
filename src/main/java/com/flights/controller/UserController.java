@@ -30,12 +30,12 @@ public class UserController {
         return userMapper.mapToUserDto(userDbService.getUser(userId).orElseThrow(UserNotFoundException::new));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "users", consumes = APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/users", consumes = APPLICATION_JSON_VALUE)
     public void createUser(@RequestBody UserDto userDto) {
         userDbService.saveUser(userMapper.mapToUser(userDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "users")
+    @RequestMapping(method = RequestMethod.PUT, value = "/users")
     public UserDto updateUser(@RequestBody UserDto userDto) {
         return userMapper.mapToUserDto(userDbService.saveUser(userMapper.mapToUser(userDto)));
     }

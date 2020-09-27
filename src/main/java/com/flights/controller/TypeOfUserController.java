@@ -30,12 +30,12 @@ public class TypeOfUserController {
         return typeOfUserMapper.mapToTypeOfUserDto(typeOfUserDbService.getTypeOfUser(typeOfUserId).orElseThrow(TypeOfUserNotFoundException::new));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "typeOfUsers", consumes = APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/typeOfUsers", consumes = APPLICATION_JSON_VALUE)
     public void createTypeOfUser(@RequestBody TypeOfUserDto typeOfUserDto) {
         typeOfUserDbService.saveTypeOfUser(typeOfUserMapper.mapToTypeOfUser(typeOfUserDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "typeOfUsers")
+    @RequestMapping(method = RequestMethod.PUT, value = "/typeOfUsers")
     public TypeOfUserDto updateTypeOfUser(@RequestBody TypeOfUserDto typeOfUserDto) {
         return typeOfUserMapper.mapToTypeOfUserDto(typeOfUserDbService.saveTypeOfUser(typeOfUserMapper.mapToTypeOfUser(typeOfUserDto)));
     }

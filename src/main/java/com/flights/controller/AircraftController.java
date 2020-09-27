@@ -40,7 +40,7 @@ public class AircraftController {
         aircraftDbService.saveAircraft(aircraftMapper.mapToAircraft(aircraftDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "aircrafts")
+    @RequestMapping(method = RequestMethod.PUT, value = "/aircrafts")
     public AircraftDto updateAircraft(@RequestBody AircraftDto aircraftDto) {
         return aircraftMapper.mapToAircraftDto(aircraftDbService.saveAircraft(aircraftMapper.mapToAircraft(aircraftDto)));
     }
