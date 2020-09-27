@@ -128,7 +128,7 @@ public class FlightControllerTestSuite {
                 .andExpect(jsonPath("$.arrival", is("London")));
     }
 
-//    @Test  //nie działa
+//    @Test //nie działa
 //    public void deleteFlightTest() throws Exception {
 //        //Given
 //        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());

@@ -26,16 +26,16 @@ public class PrivilegeController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/privileges/{privilegeId}")
-    public PrivilegeDto getPrivileges(@RequestParam Long privilegeId) throws PrivilegeNotFoundException {
+    public PrivilegeDto getPrivilege(@RequestParam Long privilegeId) throws PrivilegeNotFoundException {
         return privilegeMapper.mapToPrivilegeDto(privilegeDbService.getPrivilege(privilegeId).orElseThrow(PrivilegeNotFoundException::new));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "privileges", consumes = APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/privileges", consumes = APPLICATION_JSON_VALUE)
     public void createPrivilege(@RequestBody PrivilegeDto privilegeDto) {
         privilegeDbService.savePrivilege(privilegeMapper.mapToPrivilege(privilegeDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "privileges")
+    @RequestMapping(method = RequestMethod.PUT, value = "/privileges")
     public PrivilegeDto updatePrivilege(@RequestBody PrivilegeDto privilegeDto) {
         return privilegeMapper.mapToPrivilegeDto(privilegeDbService.savePrivilege(privilegeMapper.mapToPrivilege(privilegeDto)));
     }
