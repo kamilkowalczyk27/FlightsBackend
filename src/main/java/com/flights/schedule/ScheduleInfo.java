@@ -1,5 +1,6 @@
 package com.flights.schedule;
 
+import com.flights.repository.FlightRepository;
 import com.flights.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,9 @@ public class ScheduleInfo {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private FlightRepository flightRepository;
+
     @Scheduled(cron = "0 0 10 * * *")
     //@Scheduled(fixedDelay = 10000)
     public void sendUserCountInformation() {
@@ -26,6 +30,18 @@ public class ScheduleInfo {
             LOGGER.info("Currently in database You got: " + userSize + " " + userOrUsers);
         } else {
             LOGGER.info("User database is empty!");
+        }
+    }
+
+    @Scheduled(cron = "0 0 10 * * *")
+    //@Scheduled(fixedDelay = 10000)
+    public void sendFlightsCountInformation() {
+        long flightSize = flightRepository.count();
+        String flightOrFlights = flightSize == 1? "flight": "flights";
+        if (flightSize != 0) {
+            LOGGER.info("Currently in database You got: " + flightSize + " " + flightOrFlights);
+        } else {
+            LOGGER.info("Flight database is empty!");
         }
     }
 }
