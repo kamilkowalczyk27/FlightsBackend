@@ -20,7 +20,7 @@ public class FlightController {
     @Autowired
     private FlightMapper flightMapper;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/flights")
+    @RequestMapping(method = RequestMethod.GET, value = "/getFlights")
     public List<FlightDto> getFlights() {
         return flightMapper.mapToFlightDtoList(flightDbService.getAllFlights());
     }

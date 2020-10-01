@@ -57,7 +57,7 @@ public class FlightControllerTestSuite {
         when(flightDbService.getAllFlights()).thenReturn(flightList);
 
         //When & Then
-        mockMvc.perform(get("/v1/flights").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/v1/getFlights").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].id", is(1)))
@@ -149,7 +149,7 @@ public class FlightControllerTestSuite {
 
         when(flightDbService.getAllFlights()).thenReturn(flightList);
         //When & Then
-        mockMvc.perform(get("/v1/flights").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/v1/getFlights").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", hasSize(0)))
                 .andExpect(status().isOk());
     }

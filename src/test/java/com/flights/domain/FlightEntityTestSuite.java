@@ -25,12 +25,12 @@ public class FlightEntityTestSuite {
         //Given
         flightRepository.deleteAll();
         Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
-        Flight flight = new Flight("Berlin", "London", 2.2, aircraft);
+        Flight flight = new Flight("Moscow", "London", 2.2, aircraft);
         //When
         Flight savedFlight = flightRepository.save(flight);
         long flightId = savedFlight.getId();
         //Then
-        Assert.assertEquals("Berlin",savedFlight.getDeparture());
+        Assert.assertEquals("Moscow",savedFlight.getDeparture());
         Assert.assertEquals("London", savedFlight.getArrival());
         Assert.assertEquals("Airbus a320", savedFlight.getAircraft().getModel());
     }
