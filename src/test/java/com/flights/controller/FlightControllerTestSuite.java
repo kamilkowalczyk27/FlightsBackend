@@ -6,7 +6,6 @@ import com.flights.dto.AircraftDto;
 import com.flights.dto.FlightDto;
 import com.flights.mapper.FlightMapper;
 import com.flights.service.FlightDbService;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
