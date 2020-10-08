@@ -10,9 +10,8 @@ The main purpose of this project was to play a little with Spring and Hibernate 
 
 ### **Test it live**
 
-The application has been deployed on Heroku cloud. You can test it by yourself in POSTMAN. 
+You can test it by yourself in POSTMAN. 
 
-Link to heroku:
 
 ### **FRONT-END**
 
