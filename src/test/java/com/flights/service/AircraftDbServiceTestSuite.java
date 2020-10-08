@@ -25,8 +25,6 @@ public class AircraftDbServiceTestSuite {
     @Mock
     private AircraftRepository aircraftRepository;
 
-
-
     @Test
     public void getAllAircraftsTest() {
         //Given

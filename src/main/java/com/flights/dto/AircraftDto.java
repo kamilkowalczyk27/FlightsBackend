@@ -20,6 +20,4 @@ public class AircraftDto {
     private BigDecimal fuelBurnPerHour;
     private BigDecimal cruisingSpeed;
     private List<FlightDto> flightDtoList;
-
-
 }

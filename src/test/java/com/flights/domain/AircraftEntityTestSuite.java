@@ -37,6 +37,7 @@ public class AircraftEntityTestSuite {
     @Test  //działa
     public void readAircraftTest() throws AircraftNotFoundException {
         //Given
+
         Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
         //When
         Aircraft savedAircraft = aircraftRepository.save(aircraft);
@@ -49,23 +50,6 @@ public class AircraftEntityTestSuite {
         Assert.assertEquals(11, resultReadAircraft.getHeight(),0.001);
         Assert.assertEquals(37, resultReadAircraft.getLength(),0.001);
     }
-
-//    @Test
-//    public void readAircraftTest() throws AircraftNotFoundException { //nie działa
-//        //Given
-//        Aircraft aircraft = new Aircraft(1L,"Airbus a320", 11, 37 , new BigDecimal(870), new BigDecimal(30000), new BigDecimal(6150), new BigDecimal(5000), new BigDecimal(828), new ArrayList<>());
-//        //When
-//        Aircraft savedAircraft = aircraftRepository.save(aircraft);
-//        System.out.println(aircraft.getId());
-//        long aircraftId = savedAircraft.getId();
-//        System.out.println(aircraft.getId());
-//        Aircraft resultReadAircraft = aircraftRepository.findById(aircraft.getId()).orElseThrow(AircraftNotFoundException::new);
-//        System.out.println(savedAircraft.getId());
-//        //Then
-//        Assert.assertEquals("Airbus a320", resultReadAircraft.getModel());
-//        Assert.assertEquals(11, resultReadAircraft.getHeight(),0.001);
-//        Assert.assertEquals(37, resultReadAircraft.getLength(),0.001);
-//    }
 
     @Test
     public void updateAircraftTest() {
@@ -94,35 +78,5 @@ public class AircraftEntityTestSuite {
 
         System.out.println(countBeforeDelete);
         System.out.println(countAfterDelete);
-
-
-
-        // nie działa
-        //When
-//        aircraftRepository.save(aircraft);   // nalicza mi id za każdym razem gdy odpalam testy
-//        long countBeforeDelete = aircraftRepository.count();
-//        aircraftRepository.delete(aircraft);
-//        long countAfterDelete = aircraftRepository.count();
-//
-//        //Then
-//        Assert.assertEquals(1, countBeforeDelete);
-//        Assert.assertEquals(0, countAfterDelete);
-//
-//        System.out.println(countBeforeDelete);
-//        System.out.println(countAfterDelete);
-
-
-        //When
-//        aircraftRepository.save(aircraft);
-//        long countBeforeDelete = aircraftRepository.count();
-//        aircraftRepository.deleteById(aircraft.getId());
-//        long countAfterDelete = aircraftRepository.count();
-//        //Then
-//        Assert.assertEquals(1, countBeforeDelete);
-//        Assert.assertEquals(0, countAfterDelete);
-//
-//        System.out.println(countBeforeDelete);
-//        System.out.println(countAfterDelete);
-
     }
 }
